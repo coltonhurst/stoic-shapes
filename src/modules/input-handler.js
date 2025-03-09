@@ -15,6 +15,10 @@ class InputHandler {
         this.keys = [];
     }
 
+    hasDir() {
+        return this.keys.length > 0;
+    }
+
     /*
         Call this from an event listener.
         Example:
