@@ -25,7 +25,7 @@ class Player {
           / | \
         SW  S  SE
     */
-    move(dir, entities) {
+    move(dir, unsortedEntities) {
         const DIAGONAL_SPEED_MODIFIER = 1.41;
 
         let newX = this.x;
@@ -70,6 +70,35 @@ class Player {
                 newY = newY - (this.speed / DIAGONAL_SPEED_MODIFIER);
                 break;
         }
+
+        let sortedWallEntities = [];
+
+        // SORT WALLS FOR COLLISIONS
+        if (dir != undefined && dir != null) {
+            // Loop through all unsortedEntities
+            for (let i = 0; i < unsortedEntities.length; i++) {
+                // Handle wall collision
+                if (unsortedEntities[i].name == "wall") {
+                    let colliding_on_x_axis = (newX + this.size > unsortedEntities[i].x) && (newX < unsortedEntities[i].x + unsortedEntities[i].size);
+                    let colliding_on_y_axis = (newY + this.size > unsortedEntities[i].y) && (newY < unsortedEntities[i].y + unsortedEntities[i].size);
+                    let colliding = colliding_on_x_axis && colliding_on_y_axis;
+
+                    if (colliding) {
+                        let xDiff = Math.abs(newX - unsortedEntities[i].x);
+                        let yDiff = Math.abs(newY - unsortedEntities[i].y);
+
+                        sortedWallEntities.push({
+                            entity: unsortedEntities[i],
+                            minDiff: Math.min(xDiff, yDiff),
+                        });
+                    }
+                }
+            }
+
+            // Sort array so smallest minDiffs appear first for collisions
+            sortedWallEntities.sort((a, b) => a.minDiff - b.minDiff);
+        }
+        let entities = sortedWallEntities.map(e => e.entity);
 
         // Check for collisions
         // Each entity should have an x, y, and size
