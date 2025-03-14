@@ -12,17 +12,30 @@
     </head>
     <body>
         <h1>Stoic Shapes</h1>
-        <div class="canvas-container">
-            <canvas id="game"></canvas>
-        </div>
-        <p>
-            Stoic Shapes
-            <br>
-            a game to teach open source
-        </p>
-        <p>
-            <a href="https://www.github.com/coltonhurst/stoic-shapes">GitHub</a>
-        </p>
-        <script type="module" src="./index.js"></script> 
+        <div id="js-enabled">
+            <div class="canvas-container">
+                <canvas id="game"></canvas>
+            </div>
+            <p>
+                Stoic Shapes
+                <br>
+                a game to teach open source
+            </p>
+            <p>
+                <a href="https://www.github.com/coltonhurst/stoic-shapes">GitHub</a>
+            </p>
+            </div>
+        <script>document.getElementById("js-enabled").style.display = "block";</script>
+        <script type="module" src="./index.js"></script>
+        <noscript>
+            <div id="js-disabled">
+                <p>
+                    This requires JavaScript to run. JavaScript may be turned off, or your browser doesn't support JavaScript.
+                </p>
+                <p>
+                    Stoic Shapes is a game used for teaching students about open source. You can find the public repository <a href="https://www.github.com/coltonhurst/stoic-shapes">here</a>.
+                </p>
+            </div>
+        </noscript>
     </body>
 </html>

@@ -8,6 +8,8 @@
 body {
     text-align: center;
     font-family: 'Monaco';
+    line-height: 25px;
+
     color: var(--palette-darkblue);
     background-color: var(--palette-lightblue);
 }
@@ -27,4 +29,15 @@ a:link {
 a:visited {
     text-decoration: underline;
     color: var(--palette-darkblue);
+}
+
+#js-enabled {
+    display: none;
+}
+
+#js-disabled {
+    max-width: 400px;
+    margin: 0 auto 0 auto;
+
+    color: firebrick;
 }
