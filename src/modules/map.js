@@ -1,3 +1,4 @@
+import { Area } from './area.js'
 import { Wall } from './wall.js'
 
 /*
@@ -22,11 +23,23 @@ class Map {
     #spawnDuringLoad(id, row, column, key) {
         const WALL_SIZE = 20;
         const WALL_COLOR = "black";
+        const AREA_START_SIZE = 20;
+        const AREA_START_COLOR = "lightgray";
+        const AREA_FINISH_SIZE = 20;
+        const AREA_FINISH_COLOR = "lightgreen";
 
         switch (key) {
             case "w":
                 this.spawn(new Wall(id, "wall", column * 20, row * 20, WALL_SIZE, WALL_COLOR));
                 console.log("Spawned a wall at: (" + row + ", " + column + ")");
+                break;
+            case "s":
+                this.spawn(new Area(id, "area", "start", column * 20, row * 20, AREA_START_SIZE, AREA_START_COLOR));
+                console.log("Spawned a start area at: (" + row + ", " + column + ")");
+                break;
+            case "f":
+                this.spawn(new Area(id, "area", "finish", column * 20, row * 20, AREA_FINISH_SIZE, AREA_FINISH_COLOR));
+                console.log("Spawned a finish area at: (" + row + ", " + column + ")");
                 break;
         }
     }

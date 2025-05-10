@@ -1,8 +1,8 @@
 /*
     The class representing an area,
-    used as the start or end area.
+    used as the start or finish area.
 
-    Options for areaType: "start", "end"
+    Options for areaType: "start", "finish"
 
     Implements draw().
 */
@@ -29,4 +29,4 @@ class Area {
     }
 }
 
-export { Block };
+export { Area };
