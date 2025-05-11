@@ -9,7 +9,7 @@ let ctx = canvas.getContext("2d");
 let inputHandler = new InputHandler();
 let player = new Player(0, "player", 40, 40, 20, 1, "red");
 let map = new Map(0, "TestMap");
-let playerStoppedMoving = true; // used to "snap" player to pixel grid
+let playerMoving = false; // used to "snap" player to pixel grid
 
 setup();
 gameLoop();
@@ -65,11 +65,11 @@ function gameLoop() {
 
     // Move the player
     if (inputHandler.hasDir()) {
-        playerStoppedMoving = false;
+        playerMoving = true;
         draw_player_direction(ctx, inputHandler.getDirectionFromKeys());
         player.move(inputHandler.getDirectionFromKeys(), map.entities);
-    } else if (!playerStoppedMoving) {
-        playerStoppedMoving = true;
+    } else if (playerMoving) {
+        playerMoving = false;
         player.move(null, map.entities);
     }
 
