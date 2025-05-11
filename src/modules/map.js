@@ -1,4 +1,5 @@
 import { Area } from './area.js'
+import { Player } from './player.js'
 import { Wall } from './wall.js'
 
 /*
@@ -45,16 +46,18 @@ class Map {
     }
 
     /*
-        Takes a 2D array representing the map & spawns the
-        entities in accordingly.
+        Takes a 2D array representing the map, as well as the
+        player, & spawns the entities in accordingly.
 
         Returns true if the load succeeded, false if not.
 
         - mapData should be 20 rows x 35 columns
         - entity representations in the array:
             - 'w' = wall
+            - 's' = starting player area
+            - 'f' = finish area
     */
-    load(mapData) {
+    load(mapData, player) {
         // Verify mapData is an array and there are 20 rows
         if (!Array.isArray(mapData) || mapData.length != 20) {
             console.error("Error during load, mapData is not an array OR there are not 35 columns.");
@@ -70,12 +73,24 @@ class Map {
             }
         }
 
-        // Spawn each entity based on entry in mapData
+        // Spawn each entity based on mapData
+        // Spawn the player once for the first starting area found
+        // The player has id = 0
         let id = 1;
+        let playerSpawned = false;
         for (let i = 0; i < mapData.length; i++) {
             for (let j = 0; j < mapData[i].length; j++) {
+                // Spawn the entity
                 this.#spawnDuringLoad(id, i, j, mapData[i][j]);
                 id++;
+
+                // Spawn the player
+                if (!playerSpawned && mapData[i][j] == "s") {
+                    player.x = j * 20;
+                    player.y = i * 20;
+                    this.spawn(player);
+                    playerSpawned = true;
+                }
             }
         }
     }
