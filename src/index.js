@@ -68,9 +68,12 @@ function gameLoop() {
         playerMoving = true;
         draw_player_direction(ctx, inputHandler.getDirectionFromKeys());
         player.move(inputHandler.getDirectionFromKeys(), map.entities);
-    } else if (playerMoving) {
+    }
+    // If the player was moving last iteration but
+    // isn't moving any longer (b/c hasDir() is false)
+    else if (playerMoving) {
         playerMoving = false;
-        player.move(null, map.entities);
+        player.move(null, map.entities); // snap to grid
     }
 
     // Map calls entity draw() functions
