@@ -74,10 +74,9 @@ class Map {
         }
 
         // Spawn each entity based on mapData
-        // Spawn the player once for the first starting area found
-        // The player has id = 0
         let id = 1;
-        let playerSpawned = false;
+        let playerStartingAreaFound = false;
+
         for (let i = 0; i < mapData.length; i++) {
             for (let j = 0; j < mapData[i].length; j++) {
                 // Spawn the entity
@@ -85,13 +84,17 @@ class Map {
                 id++;
 
                 // Spawn the player
-                if (!playerSpawned && mapData[i][j] == "s") {
+                if (!playerStartingAreaFound && mapData[i][j] == "s") {
                     player.x = j * 20;
                     player.y = i * 20;
-                    this.spawn(player);
-                    playerSpawned = true;
+                    playerStartingAreaFound = true;
                 }
             }
+        }
+
+        // Spawn the player last so it's on top of all other entities on the canvas
+        if (playerStartingAreaFound) {
+            this.spawn(player);
         }
     }
 
