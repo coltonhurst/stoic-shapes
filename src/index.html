@@ -15,13 +15,26 @@
         <div id="js-enabled">
             <p>
                 a game to teach open source
+                <br>
+                <a href="https://www.github.com/coltonhurst/stoic-shapes">GitHub</a>
             </p>
+            <br>
+            <div>Welcome</div>
             <div class="canvas-container">
                 <canvas id="game"></canvas>
             </div>
+            <div>Deaths: 0</div>
             <p>
-                contribute on <a href="https://www.github.com/coltonhurst/stoic-shapes">GitHub</a>
+                <label for="levels">Choose a level:</label>
+                <select name="levels" id="levels">
+                    <option value="welcome">Welcome</option>
+                    <option value="level2">level2</option>
+                    <option value="level3">level3</option>
+                </select>
+                <button>Load Level</button>
             </p>
+            <br>
+            <br>
         </div>
         <script>document.getElementById("js-enabled").style.display = "block";</script>
         <script type="module" src="./index.js"></script>

@@ -1,5 +1,4 @@
 import { Area } from './area.js'
-import { Player } from './player.js'
 import { Wall } from './wall.js'
 
 /*
@@ -22,6 +21,7 @@ class Map {
         on the key in mapData.
     */
     #spawnDuringLoad(id, row, column, key) {
+        // Define default colors
         const WALL_SIZE = 20;
         const WALL_COLOR = "black";
         const AREA_START_SIZE = 20;
@@ -29,6 +29,7 @@ class Map {
         const AREA_FINISH_SIZE = 20;
         const AREA_FINISH_COLOR = "lightgreen";
 
+        // Spawn entities
         switch (key) {
             case "w":
                 this.spawn(new Wall(id, "wall", column * 20, row * 20, WALL_SIZE, WALL_COLOR));
