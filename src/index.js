@@ -62,7 +62,7 @@ function gameLoop() {
     // Move the player
     if (inputHandler.hasDir()) {
         playerMoving = true;
-        draw_player_direction(ctx, inputHandler.getDirectionFromKeys());
+        //draw_player_direction(ctx, inputHandler.getDirectionFromKeys()); // uncomment for debugging
         player.move(inputHandler.getDirectionFromKeys(), map.entities);
     }
     // If the player was moving last iteration but
