@@ -14,7 +14,7 @@ class Player {
         this.y = y;
         this.size = size;
         this.speed = speed;
-        this.color = color;
+        this.color = "purple";
     }
 
     /*

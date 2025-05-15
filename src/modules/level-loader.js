@@ -1,5 +1,6 @@
 import { blank } from './levels/blank.js';
 import { welcome } from './levels/welcome.js';
+import { Spongebob9000 } from './levels/Spongebob9000.js';
 
 /*
     This class is used for loading levels. The loadLevel() function
@@ -10,6 +11,7 @@ class LevelLoader {
     static levels = {
         blank: () => blank(),
         welcome: () => welcome(),
+		Spongebob9000: () => Spongebob9000(),
     };
 
     static loadLevel(levelName) {
