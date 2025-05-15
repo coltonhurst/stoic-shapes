@@ -29,13 +29,13 @@ class InputHandler {
     */
     keyDown(code) {
         if (code != undefined && code != null) {
-            if (code == "ArrowUp" && this.keys.indexOf("N") == -1) {
+            if ((code == "ArrowUp" || code == "KeyK") && this.keys.indexOf("N") == -1) {
                 this.keys.push("N");
-            } else if (code == "ArrowDown" && this.keys.indexOf("S") == -1) {
+            } else if ((code == "ArrowDown" || code == "KeyJ") && this.keys.indexOf("S") == -1) {
                 this.keys.push("S");
-            } else if (code == "ArrowLeft" && this.keys.indexOf("W") == -1) {
+            } else if ((code == "ArrowLeft" || code == "KeyH") && this.keys.indexOf("W") == -1) {
                 this.keys.push("W");
-            } else if (code == "ArrowRight" && this.keys.indexOf("E") == -1) {
+            } else if ((code == "ArrowRight" || code == "KeyL") && this.keys.indexOf("E") == -1) {
                 this.keys.push("E");
             }
         }
@@ -51,13 +51,13 @@ class InputHandler {
     */
     keyUp(code) {
         if (code != undefined && code != null) {
-            if (code == "ArrowUp" && this.keys.indexOf("N") != -1) {
+            if ((code == "ArrowUp" || code == "KeyK") && this.keys.indexOf("N") != -1) {
                 this.keys.splice(this.keys.indexOf("N"), 1);
-            } else if (code == "ArrowDown" && this.keys.indexOf("S") != -1) {
+            } else if ((code == "ArrowDown" || code == "KeyJ") && this.keys.indexOf("S") != -1) {
                 this.keys.splice(this.keys.indexOf("S"), 1);
-            } else if (code == "ArrowLeft" && this.keys.indexOf("W") != -1) {
+            } else if ((code == "ArrowLeft" || code == "KeyH") && this.keys.indexOf("W") != -1) {
                 this.keys.splice(this.keys.indexOf("W"), 1);
-            } else if (code == "ArrowRight" && this.keys.indexOf("E") != -1) {
+            } else if ((code == "ArrowRight" || code == "KeyL") && this.keys.indexOf("E") != -1) {
                 this.keys.splice(this.keys.indexOf("E"), 1);
             }
         }
