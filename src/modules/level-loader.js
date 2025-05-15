@@ -1,5 +1,6 @@
 import { blank } from './levels/blank.js';
 import { welcome } from './levels/welcome.js';
+import { pixelperfect } from './levels/patience.js';
 
 /*
     This class is used for loading levels. The loadLevel() function
@@ -10,6 +11,8 @@ class LevelLoader {
     static levels = {
         blank: () => blank(),
         welcome: () => welcome(),
+		pixelperfect: () => pixelperfect(),
+		
     };
 
     static loadLevel(levelName) {
