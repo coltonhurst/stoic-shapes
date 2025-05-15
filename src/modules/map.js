@@ -30,7 +30,7 @@ class Map {
         const AREA_FINISH_SIZE = 20;
         const AREA_FINISH_COLOR = "lightgreen";
         const ENEMY_CIRCLE_RADIUS = 10;
-        const ENEMY_CIRCLE_SPEED = 0.75;
+        const ENEMY_CIRCLE_SPEED = 1;
         const ENEMY_CIRCLE_COLOR = "blue";
 
         // Spawn entities
