@@ -33,15 +33,15 @@ class Map {
         switch (key) {
             case "w":
                 this.spawn(new Wall(id, "wall", column * 20, row * 20, WALL_SIZE, WALL_COLOR));
-                console.log("Spawned a wall at: (" + row + ", " + column + ")");
+                //console.log("Spawned a wall at: (" + row + ", " + column + ")");
                 break;
             case "s":
                 this.spawn(new Area(id, "area", "start", column * 20, row * 20, AREA_START_SIZE, AREA_START_COLOR));
-                console.log("Spawned a start area at: (" + row + ", " + column + ")");
+                //console.log("Spawned a start area at: (" + row + ", " + column + ")");
                 break;
             case "f":
                 this.spawn(new Area(id, "area", "finish", column * 20, row * 20, AREA_FINISH_SIZE, AREA_FINISH_COLOR));
-                console.log("Spawned a finish area at: (" + row + ", " + column + ")");
+                //console.log("Spawned a finish area at: (" + row + ", " + column + ")");
                 break;
         }
     }
@@ -73,6 +73,9 @@ class Map {
                 return false;
             }
         }
+
+        // Clear the current data
+        this.entities = [];
 
         // Spawn each entity based on mapData
         let id = 1;

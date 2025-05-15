@@ -1,6 +1,7 @@
 import { InputHandler } from './modules/input-handler.js'
 import { Map } from './modules/map.js'
 import { Player } from './modules/player.js'
+import { LevelLoader } from './modules/level-loader.js';
 
 // ----- START -----
 let canvas = document.getElementById("game");
@@ -27,32 +28,17 @@ function setup() {
         inputHandler.keyUp(event.code);
     });
 
-    // Build the map
-    let mapData = [
-        ["w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "s", "", "", "", "", "", "", "", "", "", "w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "w", "w", "w", "w", "w", "w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "w"],
-        ["w", "", "", "s", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "f", "w"],
-        ["w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"],
-    ];
+    // Add event listener for the levelLoader
+    let levelLoaderButton = document.getElementById("levelLoaderButton");
+    levelLoaderButton.addEventListener("click", function () {
+        loadLevel();
+    });
 
-    // Load the mapData into the map
-    map.load(mapData, player);
+    // Load the default level & player
+    let defaultLevelKey = "welcome";
+    let defaultLevelName = "Welcome";
+    document.getElementById("levels").value = defaultLevelKey;
+    loadLevel(defaultLevelKey, defaultLevelName);
 }
 
 function gameLoop() {
@@ -62,7 +48,7 @@ function gameLoop() {
     // Move the player
     if (inputHandler.hasDir()) {
         playerMoving = true;
-        //draw_player_direction(ctx, inputHandler.getDirectionFromKeys()); // uncomment for debugging
+        //drawPlayerDirection(ctx, inputHandler.getDirectionFromKeys()); // uncomment for debugging
         player.move(inputHandler.getDirectionFromKeys(), map.entities);
     }
     // If the player was moving last iteration but
@@ -79,7 +65,42 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 }
 
-function draw_player_direction(ctx, dir) {
+/*
+    loadLevel() first attempts to load the level passed in.
+    If it can't, it will attempt to load the level selected.
+    If it can't, it will display an error message.
+*/
+function loadLevel(levelKey, levelName) {
+    if (levelKey != undefined && levelKey != null && levelKey.length > 0
+        && levelName != undefined && levelName != null && levelName.length > 0
+    ) {
+        //console.log("Attempting to load level (passed in): " + levelKey);
+        let loadedLevel = LevelLoader.loadLevel(levelKey);
+
+        if (loadedLevel != undefined && loadedLevel != null && loadedLevel.length > 0) {
+            map.load(loadedLevel, player);
+            document.getElementById("levelName").value = levelName;
+        } else {
+            alert("Error: can't find this level");
+        }
+    } else {
+        let levelSelectElement = document.getElementById("levels");
+        let levelKey = levelSelectElement.value;
+        let levelName = levelSelectElement[levelSelectElement.selectedIndex].text;
+
+        //console.log("Attempting to load level (selected): " + levelKey);
+        let loadedLevel = LevelLoader.loadLevel(levelKey);
+
+        if (loadedLevel != undefined && loadedLevel != null && loadedLevel.length > 0) {
+            map.load(loadedLevel, player);
+            document.getElementById("levelName").value = levelName;
+        } else {
+            alert("Error: can't find this level");
+        }
+    }
+}
+
+function drawPlayerDirection(ctx, dir) {
     ctx.fillStyle = "red";
     ctx.font = "bold 16px Arial";
     ctx.textAlign = 'center';
