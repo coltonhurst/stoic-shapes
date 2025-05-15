@@ -1,5 +1,4 @@
 import { blank } from './levels/blank.js';
-import { test } from './levels/test.js';
 import { welcome } from './levels/welcome.js';
 
 /*
