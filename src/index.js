@@ -60,12 +60,19 @@ function gameLoop() {
             playerMoving = false;
             player.move(null, map.entities); // snap to grid
         }
+        // The player isn't moving
+        else {
+            player.nonMoveEnemyCollisionCheck(map.entities);
+        }
     } else if (player.loseCondition) {
         player.loseCondition = false;
         loadLevel(); // shouldn't do it this way but ... fix it later
     } else if (player.winCondition) {
         win(ctx);
     }
+
+    // Move the enemies
+    map.moveCircles(map.entities);
 
     // Map calls entity draw() functions
     map.drawAll(ctx);

@@ -30,6 +30,7 @@ class Map {
         const AREA_FINISH_SIZE = 20;
         const AREA_FINISH_COLOR = "lightgreen";
         const ENEMY_CIRCLE_RADIUS = 10;
+        const ENEMY_CIRCLE_SPEED = 0.75;
         const ENEMY_CIRCLE_COLOR = "blue";
 
         // Spawn entities
@@ -47,19 +48,19 @@ class Map {
                 //console.log("Spawned a finish area at: (" + row + ", " + column + ")");
                 break;
             case "^":
-                this.spawn(new Circle(id, "circle", "^", column * 20, row * 20, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_COLOR));
+                this.spawn(new Circle(id, "circle", "^", column * 20, row * 20, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_SPEED, ENEMY_CIRCLE_COLOR));
                 //console.log("Spawned an enemy at: (" + row + ", " + column + ")");
                 break;
             case ">":
-                this.spawn(new Circle(id, "circle", ">", column * 20, row * 20, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_COLOR));
+                this.spawn(new Circle(id, "circle", ">", column * 20, row * 20, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_SPEED, ENEMY_CIRCLE_COLOR));
                 //console.log("Spawned an enemy at: (" + row + ", " + column + ")");
                 break;
             case "v":
-                this.spawn(new Circle(id, "circle", "v", column * 20, row * 20, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_COLOR));
+                this.spawn(new Circle(id, "circle", "v", column * 20, row * 20, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_SPEED, ENEMY_CIRCLE_COLOR));
                 //console.log("Spawned an enemy at: (" + row + ", " + column + ")");
                 break;
             case "<":
-                this.spawn(new Circle(id, "circle", "<", column * 20, row * 20, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_COLOR));
+                this.spawn(new Circle(id, "circle", "<", column * 20, row * 20, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_SPEED, ENEMY_CIRCLE_COLOR));
                 //console.log("Spawned an enemy at: (" + row + ", " + column + ")");
                 break;
         }
@@ -165,6 +166,20 @@ class Map {
     */
     clear() {
         this.entities = [];
+    }
+
+    /*
+        This function calls the move function on each entity
+        (besides the player) that can move.
+
+        Right now this is only enemies.
+    */
+    moveCircles() {
+        for (let i = 0; i < this.entities.length; i++) {
+            if (this.entities[i].name == "circle") {
+                this.entities[i].move(this.entities);
+            }
+        }
     }
 
     /*

@@ -242,6 +242,24 @@ class Player {
         this.y = newY;
     }
 
+    /*
+        The movement system and collision system really need to be
+        separated, but ... that'll have to wait. (TODO!)
+    */
+    nonMoveEnemyCollisionCheck(entities) {
+        for (let i = 0; i < entities.length; i++) {
+            if (entities[i].name == "circle") {
+                let colliding_on_x_axis = (this.x + this.size > entities[i].x - entities[i].size + 1) && (this.x < entities[i].x + entities[i].size - 1);
+                let colliding_on_y_axis = (this.y + this.size > entities[i].y - entities[i].size + 1) && (this.y < entities[i].y + entities[i].size - 1);
+                let colliding = colliding_on_x_axis && colliding_on_y_axis;
+
+                if (colliding) {
+                    this.loseCondition = true;
+                }
+            }
+        }
+    }
+
     draw(ctx) {
         ctx.beginPath();
         ctx.rect(this.x, this.y, this.size, this.size);
