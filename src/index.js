@@ -8,7 +8,7 @@ import { Circle } from './modules/circle.js'
 let canvas = document.getElementById("game");
 let ctx = canvas.getContext("2d");
 let inputHandler = new InputHandler();
-let player = new Player(0, "player", 40, 40, 20, 1, "red");
+let player = new Player(0, "player", 40, 40, 20, 1, "black");
 let map = new Map(0, "TestMap");
 let playerMoving = false; // used to "snap" player to pixel grid
 
