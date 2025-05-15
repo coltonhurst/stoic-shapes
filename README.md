@@ -15,3 +15,8 @@ In order to be as accessible as possible, Stoic Shapes is written in vanilla Jav
 Stoic Shapes and everything in this repository is licensed under the [OSI approved AGPLv3 license](https://opensource.org/license/agpl-v3). A local copy of the license can be found [here](./LICENSE).
 
 Contributions are welcome!
+
+<br>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2f18fa36-d093-40de-b219-8d093f1b284a" width="600"/>
+</p>
