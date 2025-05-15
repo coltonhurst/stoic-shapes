@@ -2,6 +2,7 @@
     Level Description & Author Info here
 	//Try a touhou game
 	//Arun Balot
+	//All the speed in the world
 */
 
 function touhou() {
