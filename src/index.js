@@ -45,17 +45,22 @@ function gameLoop() {
     // Clear the screen
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    // Move the player
-    if (inputHandler.hasDir()) {
-        playerMoving = true;
-        //drawPlayerDirection(ctx, inputHandler.getDirectionFromKeys()); // uncomment for debugging
-        player.move(inputHandler.getDirectionFromKeys(), map.entities);
-    }
-    // If the player was moving last iteration but
-    // isn't moving any longer (b/c hasDir() is false)
-    else if (playerMoving) {
-        playerMoving = false;
-        player.move(null, map.entities); // snap to grid
+    // Check the win condition
+    if (!player.winCondition) {
+        // Move the player
+        if (inputHandler.hasDir()) {
+            playerMoving = true;
+            //drawPlayerDirection(ctx, inputHandler.getDirectionFromKeys()); // uncomment for debugging
+            player.move(inputHandler.getDirectionFromKeys(), map.entities);
+        }
+        // If the player was moving last iteration but
+        // isn't moving any longer (b/c hasDir() is false)
+        else if (playerMoving) {
+            playerMoving = false;
+            player.move(null, map.entities); // snap to grid
+        }
+    } else {
+        win(ctx);
     }
 
     // Map calls entity draw() functions
@@ -80,6 +85,7 @@ function loadLevel(levelKey, levelName) {
         if (loadedLevel != undefined && loadedLevel != null && loadedLevel.length > 0) {
             map.load(loadedLevel, player);
             document.getElementById("levelName").innerHTML = levelName;
+            player.winCondition = false;
         } else {
             alert("Error: can't find this level");
         }
@@ -94,10 +100,19 @@ function loadLevel(levelKey, levelName) {
         if (loadedLevel != undefined && loadedLevel != null && loadedLevel.length > 0) {
             map.load(loadedLevel, player);
             document.getElementById("levelName").innerHTML = levelName;
+            player.winCondition = false;
         } else {
             alert("Error: can't find this level");
         }
     }
+}
+
+function win(ctx) {
+    ctx.fillStyle = "red";
+    ctx.font = "bold 24px Arial";
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText("You win!", (canvas.width / 2), (canvas.height / 2));
 }
 
 function drawPlayerDirection(ctx, dir) {

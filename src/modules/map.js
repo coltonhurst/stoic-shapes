@@ -75,7 +75,7 @@ class Map {
         }
 
         // Clear the current data
-        this.entities = [];
+        this.clear();
 
         // Spawn each entity based on mapData
         let id = 1;
@@ -139,6 +139,10 @@ class Map {
                 this.entities.splice(i, 1);
             }
         }
+    }
+
+    clear() {
+        this.entities = [];
     }
 
     /*

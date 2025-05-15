@@ -4,6 +4,8 @@
     Implements move() and draw().
 */
 class Player {
+    static winCondition = false;
+
     constructor(id, name, x, y, size, speed, color) {
         this.id = id;
         this.name = name;
@@ -26,7 +28,7 @@ class Player {
         SW  S  SE
     */
     move(dir, unsortedEntities) {
-        const DIAGONAL_SPEED_MODIFIER = 1.41;
+        const DIAGONAL_SPEED_MODIFIER = 1.414;
 
         let newX = this.x;
         let newY = this.y;
@@ -73,7 +75,8 @@ class Player {
 
         let sortedWallEntities = [];
 
-        // SORT WALLS FOR COLLISIONS
+        // Sort walls for collisions
+        // For more info, see: https://github.com/coltonhurst/stoic-shapes/pull/1
         if (dir != undefined && dir != null) {
             // Loop through all unsortedEntities
             for (let i = 0; i < unsortedEntities.length; i++) {
@@ -93,6 +96,16 @@ class Player {
                         });
                     }
                 }
+                // Handle finish area collision
+                else if (unsortedEntities[i].name == "area" && unsortedEntities[i].areaType == "finish") {
+                    let colliding_on_x_axis = (newX + this.size > unsortedEntities[i].x) && (newX < unsortedEntities[i].x + unsortedEntities[i].size);
+                    let colliding_on_y_axis = (newY + this.size > unsortedEntities[i].y) && (newY < unsortedEntities[i].y + unsortedEntities[i].size);
+                    let colliding = colliding_on_x_axis && colliding_on_y_axis;
+
+                    if (colliding) {
+                        this.winCondition = true;
+                    }
+                }
             }
 
             // Sort array so smallest minDiffs appear first for collisions
@@ -100,7 +113,7 @@ class Player {
         }
         let entities = sortedWallEntities.map(e => e.entity);
 
-        // Check for collisions
+        // Handle wall collisions
         // Each entity should have an x, y, and size
         if (dir != undefined && dir != null) {
             // Loop through all entities
