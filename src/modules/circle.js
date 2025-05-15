@@ -36,16 +36,16 @@ class Circle {
         // colliding with a wall.
         switch (this.type) {
             case "^":
-                newY = newY - this.speed;
+                newY -= this.speed;
                 break;
             case ">":
-                newX = newX + this.speed;
+                newX += this.speed;
                 break;
             case "v":
-                newY = newY = newY + this.speed;
+                newY += this.speed;
                 break;
             case "<":
-                newX = newX - this.speed;
+                newX -= this.speed;
                 break;
         }
 

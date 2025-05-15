@@ -45,32 +45,32 @@ class Player {
                 newY = Math.round(newY);
                 break;
             case "N":
-                newY = newY - this.speed;
+                newY -= this.speed;
                 break;
             case "NE":
-                newX = newX + (this.speed / DIAGONAL_SPEED_MODIFIER);
-                newY = newY - (this.speed / DIAGONAL_SPEED_MODIFIER);
+                newX += (this.speed / DIAGONAL_SPEED_MODIFIER);
+                newY -= (this.speed / DIAGONAL_SPEED_MODIFIER);
                 break;
             case "E":
-                newX = newX + this.speed;
+                newX += this.speed;
                 break;
             case "SE":
-                newX = newX + (this.speed / DIAGONAL_SPEED_MODIFIER);
-                newY = newY + (this.speed / DIAGONAL_SPEED_MODIFIER);
+                newX += (this.speed / DIAGONAL_SPEED_MODIFIER);
+                newY += (this.speed / DIAGONAL_SPEED_MODIFIER);
                 break;
             case "S":
-                newY = newY = newY + this.speed;
+                newY += this.speed;
                 break;
             case "SW":
-                newX = newX - (this.speed / DIAGONAL_SPEED_MODIFIER);
-                newY = newY + (this.speed / DIAGONAL_SPEED_MODIFIER);
+                newX -= (this.speed / DIAGONAL_SPEED_MODIFIER);
+                newY += (this.speed / DIAGONAL_SPEED_MODIFIER);
                 break;
             case "W":
-                newX = newX - this.speed;
+                newX -= this.speed;
                 break;
             case "NW":
-                newX = newX - (this.speed / DIAGONAL_SPEED_MODIFIER);
-                newY = newY - (this.speed / DIAGONAL_SPEED_MODIFIER);
+                newX -= (this.speed / DIAGONAL_SPEED_MODIFIER);
+                newY -= (this.speed / DIAGONAL_SPEED_MODIFIER);
                 break;
         }
 
