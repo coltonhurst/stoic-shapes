@@ -4,7 +4,7 @@
 	//Arun Balot
 */
 
-function touhoued() {
+function touhou() {
     return [
         ["w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"],
         ["w", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "f", "f", "w"],
@@ -29,4 +29,4 @@ function touhoued() {
     ];
 }
 
-export { touhoued };
+export { touhou };
