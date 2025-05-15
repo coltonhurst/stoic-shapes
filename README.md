@@ -8,7 +8,7 @@ Stoic Shapes is a game and teaching tool that is paired with a talk about Open S
 
 ## Technical Details
 
-In order to be as accessible as possible, Stoic Shapes is written in JavaScript, and is played in the browser. There are definitely improvements that can be made, and are partly left as an exercise for the audience, students, and community members.
+In order to be as accessible as possible, Stoic Shapes is written in vanilla JavaScript, and is played in the browser. There are definitely improvements that can be made, and are partly left as an exercise for the audience, students, and community members.
 
 ## License & Contributing
 
