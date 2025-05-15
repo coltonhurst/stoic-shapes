@@ -48,19 +48,19 @@ class Map {
                 //console.log("Spawned a finish area at: (" + row + ", " + column + ")");
                 break;
             case "^":
-                this.spawn(new Circle(id, "circle", "^", column * 20, row * 20, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_SPEED, ENEMY_CIRCLE_COLOR));
+                this.spawn(new Circle(id, "circle", "^", (column * 20) + ENEMY_CIRCLE_RADIUS, (row * 20) + ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_SPEED, ENEMY_CIRCLE_COLOR));
                 //console.log("Spawned an enemy at: (" + row + ", " + column + ")");
                 break;
             case ">":
-                this.spawn(new Circle(id, "circle", ">", column * 20, row * 20, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_SPEED, ENEMY_CIRCLE_COLOR));
+                this.spawn(new Circle(id, "circle", ">", (column * 20) + ENEMY_CIRCLE_RADIUS, (row * 20) + ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_SPEED, ENEMY_CIRCLE_COLOR));
                 //console.log("Spawned an enemy at: (" + row + ", " + column + ")");
                 break;
             case "v":
-                this.spawn(new Circle(id, "circle", "v", column * 20, row * 20, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_SPEED, ENEMY_CIRCLE_COLOR));
+                this.spawn(new Circle(id, "circle", "v", (column * 20) + ENEMY_CIRCLE_RADIUS, (row * 20) + ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_SPEED, ENEMY_CIRCLE_COLOR));
                 //console.log("Spawned an enemy at: (" + row + ", " + column + ")");
                 break;
             case "<":
-                this.spawn(new Circle(id, "circle", "<", column * 20, row * 20, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_SPEED, ENEMY_CIRCLE_COLOR));
+                this.spawn(new Circle(id, "circle", "<", (column * 20) + ENEMY_CIRCLE_RADIUS, (row * 20) + ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_RADIUS, ENEMY_CIRCLE_SPEED, ENEMY_CIRCLE_COLOR));
                 //console.log("Spawned an enemy at: (" + row + ", " + column + ")");
                 break;
         }
