@@ -24,14 +24,14 @@ class Map {
     #spawnDuringLoad(id, row, column, key) {
         // Define default colors
         const WALL_SIZE = 20;
-        const WALL_COLOR = "black";
+        const WALL_COLOR = "yellow";
         const AREA_START_SIZE = 20;
-        const AREA_START_COLOR = "lightgray";
+        const AREA_START_COLOR = "red";
         const AREA_FINISH_SIZE = 20;
-        const AREA_FINISH_COLOR = "lightgreen";
+        const AREA_FINISH_COLOR = "lightblue";
         const ENEMY_CIRCLE_RADIUS = 10;
-        const ENEMY_CIRCLE_SPEED = 0.75;
-        const ENEMY_CIRCLE_COLOR = "blue";
+        const ENEMY_CIRCLE_SPEED = 5;
+        const ENEMY_CIRCLE_COLOR = "purple";
 
         // Spawn entities
         switch (key) {
