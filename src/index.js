@@ -79,7 +79,7 @@ function loadLevel(levelKey, levelName) {
 
         if (loadedLevel != undefined && loadedLevel != null && loadedLevel.length > 0) {
             map.load(loadedLevel, player);
-            document.getElementById("levelName").value = levelName;
+            document.getElementById("levelName").innerHTML = levelName;
         } else {
             alert("Error: can't find this level");
         }
@@ -93,7 +93,7 @@ function loadLevel(levelKey, levelName) {
 
         if (loadedLevel != undefined && loadedLevel != null && loadedLevel.length > 0) {
             map.load(loadedLevel, player);
-            document.getElementById("levelName").value = levelName;
+            document.getElementById("levelName").innerHTML = levelName;
         } else {
             alert("Error: can't find this level");
         }
