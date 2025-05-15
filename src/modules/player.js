@@ -4,7 +4,8 @@
     Implements move() and draw().
 */
 class Player {
-    static winCondition = false;
+    winCondition = false;
+    loseCondition = false;
 
     constructor(id, name, x, y, size, speed, color) {
         this.id = id;
@@ -75,7 +76,8 @@ class Player {
 
         let sortedWallEntities = [];
 
-        // Sort walls for collisions
+        // Handle entity collisions
+        // For walls: sort for collision purposes
         // For more info, see: https://github.com/coltonhurst/stoic-shapes/pull/1
         if (dir != undefined && dir != null) {
             // Loop through all unsortedEntities
@@ -94,6 +96,18 @@ class Player {
                             entity: unsortedEntities[i],
                             minDiff: Math.min(xDiff, yDiff),
                         });
+                    }
+                }
+                // Handle enemy circle collisions
+                // For now this is a square, with a small buffer
+                // Essentially, collision area is radius - 1
+                else if (unsortedEntities[i].name == "circle") {
+                    let colliding_on_x_axis = (newX + this.size > unsortedEntities[i].x - unsortedEntities[i].size + 1) && (newX < unsortedEntities[i].x + unsortedEntities[i].size - 1);
+                    let colliding_on_y_axis = (newY + this.size > unsortedEntities[i].y - unsortedEntities[i].size + 1) && (newY < unsortedEntities[i].y + unsortedEntities[i].size - 1);
+                    let colliding = colliding_on_x_axis && colliding_on_y_axis;
+
+                    if (colliding) {
+                        this.loseCondition = true;
                     }
                 }
                 // Handle finish area collision

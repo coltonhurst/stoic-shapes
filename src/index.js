@@ -2,6 +2,7 @@ import { InputHandler } from './modules/input-handler.js'
 import { Map } from './modules/map.js'
 import { Player } from './modules/player.js'
 import { LevelLoader } from './modules/level-loader.js';
+import { Circle } from './modules/circle.js'
 
 // ----- START -----
 let canvas = document.getElementById("game");
@@ -46,7 +47,7 @@ function gameLoop() {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
     // Check the win condition
-    if (!player.winCondition) {
+    if (!player.winCondition && !player.loseCondition) {
         // Move the player
         if (inputHandler.hasDir()) {
             playerMoving = true;
@@ -59,7 +60,10 @@ function gameLoop() {
             playerMoving = false;
             player.move(null, map.entities); // snap to grid
         }
-    } else {
+    } else if (player.loseCondition) {
+        player.loseCondition = false;
+        loadLevel(); // shouldn't do it this way but ... fix it later
+    } else if (player.winCondition) {
         win(ctx);
     }
 
