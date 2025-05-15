@@ -1,6 +1,6 @@
 import { blank } from './levels/blank.js';
 import { welcome } from './levels/welcome.js';
-
+import { fishes } from './levels/fishes.js';
 /*
     This class is used for loading levels. The loadLevel() function
     is purposely static, so you don't need to create an instance
@@ -10,6 +10,7 @@ class LevelLoader {
     static levels = {
         blank: () => blank(),
         welcome: () => welcome(),
+		fishes: () => fishes(),
     };
 
     static loadLevel(levelName) {
