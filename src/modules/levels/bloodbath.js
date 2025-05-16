@@ -1,8 +1,9 @@
 /*
     Level Description & Author Info here
+	Author: Jacob Nunley
 */
 
-function level() {
+function bloodbath() {
     return [
         ["w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w", "w"],
         ["w", "", "", "", "w", "", "", "", "", "", "", "", "", "", "v", "", "v", "", "v", "", "v", "", "v", "", "v", "", "v", "", "v", "", "v", "", "", "", "w"],
@@ -27,4 +28,4 @@ function level() {
     ];
 }
 
-export { level };
+export { bloodbath };
