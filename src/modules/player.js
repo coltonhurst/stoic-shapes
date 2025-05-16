@@ -120,6 +120,14 @@ class Player {
                         this.winCondition = true;
                     }
                 }
+				//handle slow wall collision
+				else if (unsortedEntities[i].name == "slowWall") {
+					this.speed = 0.8
+				}
+				//handle reverse slow wall collision
+				else if (unsortedEntities[i].name == "antiSlow") {
+					this.speed = 1
+				}
             }
 
             // Sort array so smallest minDiffs appear first for collisions

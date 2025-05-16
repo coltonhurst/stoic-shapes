@@ -1,7 +1,7 @@
 /*
     Level Description & Author Info here
 	Author: Jacob
-	Description: The level requires many quick almost pixel-perfect stops to avoid circles, as such it is very difficult. The end was created as a small break to the difficulty.
+	Description: The level requires many quick almost pixel-perfect stops to avoid circles, as such it is very difficult. The end was created as a small break to the difficulty. It also slows down and speeds up the player at certain points to make it more difficult.
 */
 
 function bloodbath() {
