@@ -1,6 +1,7 @@
 /*
     Level Description & Author Info here
-	Author: Jacob Nunley
+	Author: Jacob
+	Description: The level requires many quick almost pixel-perfect stops to avoid circles, as such it is very difficult. The end was created as a small break to the difficulty.
 */
 
 function bloodbath() {
