@@ -276,6 +276,7 @@ class Player {
 
                 if (colliding) {
                     this.loseCondition = true;
+					this.speed = 1;
                 }
             }
         }
