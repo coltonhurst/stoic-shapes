@@ -108,6 +108,7 @@ class Player {
 
                     if (colliding) {
                         this.loseCondition = true;
+						this.speed = 1;
                     }
                 }
                 // Handle finish area collision
@@ -127,7 +128,7 @@ class Player {
                     let colliding = colliding_on_x_axis && colliding_on_y_axis;
 					
 					if (colliding) {
-                        this.speed = 0.8
+                        this.speed = 0.8;
                     }
 				}
 				//handle reverse slow wall collision
@@ -137,7 +138,7 @@ class Player {
                     let colliding = colliding_on_x_axis && colliding_on_y_axis;
 					
 					if (colliding) {
-                        this.speed = 1
+                        this.speed = 1;
                     }
 				}
             }
