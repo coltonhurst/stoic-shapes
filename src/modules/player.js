@@ -111,7 +111,7 @@ class Player {
                     }
                 }
                 // Handle finish area collision
-                else if (unsortedEntities[i].name == "area" && unsortedEntities[i].areaType == "finish") {
+                else if (unsortedEntities[i].name == "area" && unsortedEntities[i].name == "finish") {
                     let colliding_on_x_axis = (newX + this.size > unsortedEntities[i].x) && (newX < unsortedEntities[i].x + unsortedEntities[i].size);
                     let colliding_on_y_axis = (newY + this.size > unsortedEntities[i].y) && (newY < unsortedEntities[i].y + unsortedEntities[i].size);
                     let colliding = colliding_on_x_axis && colliding_on_y_axis;
@@ -122,11 +122,23 @@ class Player {
                 }
 				//handle slow wall collision
 				else if (unsortedEntities[i].name == "slowWall") {
-					this.speed = 0.8
+                    let colliding_on_x_axis = (newX + this.size > unsortedEntities[i].x) && (newX < unsortedEntities[i].x + unsortedEntities[i].size);
+                    let colliding_on_y_axis = (newY + this.size > unsortedEntities[i].y) && (newY < unsortedEntities[i].y + unsortedEntities[i].size);
+                    let colliding = colliding_on_x_axis && colliding_on_y_axis;
+					
+					if (colliding) {
+                        this.speed = 0.8
+                    }
 				}
 				//handle reverse slow wall collision
 				else if (unsortedEntities[i].name == "antiSlow") {
-					this.speed = 1
+                    let colliding_on_x_axis = (newX + this.size > unsortedEntities[i].x) && (newX < unsortedEntities[i].x + unsortedEntities[i].size);
+                    let colliding_on_y_axis = (newY + this.size > unsortedEntities[i].y) && (newY < unsortedEntities[i].y + unsortedEntities[i].size);
+                    let colliding = colliding_on_x_axis && colliding_on_y_axis;
+					
+					if (colliding) {
+                        this.speed = 1
+                    }
 				}
             }
 
