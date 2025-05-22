@@ -1,7 +1,6 @@
 import { blank } from './levels/blank.js';
 import { welcome } from './levels/welcome.js';
 import { bloodbath } from './levels/bloodbath.js';
-import { coffee } from './levels/coffee.js';
 
 /*
     This class is used for loading levels. The loadLevel() function
@@ -13,7 +12,6 @@ class LevelLoader {
         blank: () => blank(),
         welcome: () => welcome(),
 		bloodbath: () => bloodbath(),
-		coffee: () => coffee()
     };
 
     static loadLevel(levelName) {
