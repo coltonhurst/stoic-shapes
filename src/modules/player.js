@@ -108,6 +108,7 @@ class Player {
 
                     if (colliding) {
                         this.loseCondition = true;
+						this.speed = 1;
                     }
                 }
                 // Handle finish area collision
@@ -120,6 +121,26 @@ class Player {
                         this.winCondition = true;
                     }
                 }
+				//handle slow wall collision
+				else if (unsortedEntities[i].name == "slowWall") {
+                    let colliding_on_x_axis = (newX + this.size > unsortedEntities[i].x) && (newX < unsortedEntities[i].x + unsortedEntities[i].size);
+                    let colliding_on_y_axis = (newY + this.size > unsortedEntities[i].y) && (newY < unsortedEntities[i].y + unsortedEntities[i].size);
+                    let colliding = colliding_on_x_axis && colliding_on_y_axis;
+					
+					if (colliding) {
+                        this.speed = 0.8;
+                    }
+				}
+				//handle reverse slow wall collision
+				else if (unsortedEntities[i].name == "antiSlow") {
+                    let colliding_on_x_axis = (newX + this.size > unsortedEntities[i].x) && (newX < unsortedEntities[i].x + unsortedEntities[i].size);
+                    let colliding_on_y_axis = (newY + this.size > unsortedEntities[i].y) && (newY < unsortedEntities[i].y + unsortedEntities[i].size);
+                    let colliding = colliding_on_x_axis && colliding_on_y_axis;
+					
+					if (colliding) {
+                        this.speed = 1;
+                    }
+				}
             }
 
             // Sort array so smallest minDiffs appear first for collisions
@@ -255,6 +276,7 @@ class Player {
 
                 if (colliding) {
                     this.loseCondition = true;
+					this.speed = 1;
                 }
             }
         }

@@ -1,6 +1,8 @@
 import { Area } from './area.js'
 import { Circle } from './circle.js'
 import { Wall } from './wall.js'
+import { Slow } from './slow.js'
+import { ReverseSlow } from './antislow.js'
 
 /*
     The class representing a map.
@@ -25,6 +27,10 @@ class Map {
         // Define default colors
         const WALL_SIZE = 20;
         const WALL_COLOR = "black";
+		const SLOW_SIZE = 20;
+        const SLOW_COLOR = "yellow";
+		const REVSLOW_SIZE = 20;
+        const REVSLOW_COLOR = "pink";
         const AREA_START_SIZE = 20;
         const AREA_START_COLOR = "lightgray";
         const AREA_FINISH_SIZE = 20;
@@ -38,6 +44,14 @@ class Map {
             case "w":
                 this.spawn(new Wall(id, "wall", column * 20, row * 20, WALL_SIZE, WALL_COLOR));
                 //console.log("Spawned a wall at: (" + row + ", " + column + ")");
+                break;
+			case "sw":
+                this.spawn(new Slow(id, "slowWall", column * 20, row * 20, SLOW_SIZE, SLOW_COLOR));
+                //console.log("Spawned a slow wall at: (" + row + ", " + column + ")");
+                break;
+			case "as":
+                this.spawn(new ReverseSlow(id, "antiSlow", column * 20, row * 20, REVSLOW_SIZE, REVSLOW_COLOR));
+                //console.log("Spawned a reverse slow wall at: (" + row + ", " + column + ")");
                 break;
             case "s":
                 this.spawn(new Area(id, "area", "start", column * 20, row * 20, AREA_START_SIZE, AREA_START_COLOR));

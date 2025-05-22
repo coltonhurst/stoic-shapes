@@ -1,5 +1,6 @@
 import { blank } from './levels/blank.js';
 import { welcome } from './levels/welcome.js';
+import { bloodbath } from './levels/bloodbath.js';
 import { coffee } from './levels/coffee.js';
 
 /*
@@ -11,6 +12,7 @@ class LevelLoader {
     static levels = {
         blank: () => blank(),
         welcome: () => welcome(),
+		    bloodbath: () => bloodbath(),
         coffee: () => coffee(),
     };
 
